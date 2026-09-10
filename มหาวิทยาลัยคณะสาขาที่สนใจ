@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>มหาวิทยาลัยที่สนใจ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background-color: white;
+            width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px #aaa;
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 15px;
+        }
+
+        span {
+            color: #7b1fa2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>มหาวิทยาลัยที่สนใจ</h1>
+
+        <p>มหาวิทยาลัย: <span>มหาวิทยาลัยศรีนครินทรวิโรฒ</span></p>
+
+        <p>คณะ: <span>คณะมนุยษ์ศาสตร์</span></p>
+
+        <p>สาขา: <span>วิชาภาษาภาคตะวันออก</span></p>
+    </div>
+
+</body>
+</html>
+```
