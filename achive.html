@@ -237,6 +237,17 @@
     line-height: 1.7;
     color: #4a3f35;
   }
+  .uni-seal-wrap {
+  perspective: 600px;   /* ทำให้เห็นมิติความลึกตอนหมุน ถ้าไม่ใส่จะแบนราบไม่มีมิติ */
+}
+.uni-seal {
+  transform-style: preserve-3d;
+  animation: spin-seal 4s linear infinite;
+}
+@keyframes spin-seal {
+  from { transform: rotateY(0deg); }   /* rotateY = หมุนรอบแกนตั้ง */
+  to   { transform: rotateY(360deg); }
+}
     </style>
 </head>
 <body>
@@ -250,8 +261,8 @@
     <nav>
       <ul>
         <li><a href="index.html" ><i>🏠</i> หน้าแรก</a></li>
-        <li><a href="portfolio.html" class="active"><i>🎓</i> ประวัติการศึกษาและผลงาน</a></li>
-        <li><a href="collection.html"><i>📋</i> หน้าเกียรติบัตร</a></li>
+        <li><a href="portfolio.html" ><i>🎓</i> ประวัติการศึกษาและผลงาน</a></li>
+        <li><a href="collection.html" class="active"><i>📋</i> หน้าเกียรติบัตร</a></li>
         <li><a href="dm.html"><i>✉️</i> ติดต่อ</a></li>
       </ul>
     </nav>
@@ -278,6 +289,39 @@
     </div>
  
 </aside>
-
+<div class="main-content">
+    <div class="uni-card">
+      <div class="uni-badge">🎓 TARGET UNIVERSITY</div>
+ 
+      <div class="uni-seal-wrap">
+        <svg class="uni-seal" viewBox="0 0 130 170">
+          <ellipse cx="65" cy="85" rx="62" ry="80" fill="none" stroke="#e0692b" stroke-width="3"/>
+          <ellipse cx="65" cy="85" rx="54" ry="72" fill="none" stroke="#e0692b" stroke-width="1.5"/>
+          <path d="M40 60 L65 20 L90 60 Z" fill="none" stroke="#e0692b" stroke-width="2"/>
+          <rect x="55" y="55" width="20" height="45" fill="none" stroke="#e0692b" stroke-width="2"/>
+          <text x="65" y="140" text-anchor="middle" font-size="9" fill="#e0692b" font-weight="700">TARGET UNI</text>
+        </svg>
+      </div>
+ 
+      <h3 class="uni-title">มหาวิทยาลัยที่อยากเข้า</h3>
+      <p class="uni-name">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+ 
+      <button class="uni-btn" onclick="document.getElementById('uniModal').classList.add('open')">
+        👆 คลิกเพื่อดูรายละเอียดคณะ
+      </button>
+    </div>
+  </div>
+ <div>
+  <div id="uniModal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('uniModal').classList.remove('open')">✕</button>
+      <h3>รายละเอียดคณะ</h3>
+      <p>
+        คณะเทคโนโลยีสารสนเทศ สจล. เปิดสอนหลักสูตรที่เกี่ยวข้องกับภาษาและเทคโนโลยี
+        แก้ไขรายละเอียดตรงนี้ให้ตรงกับคณะ/สาขาที่ต้องการได้เลยครับ
+      </p>
+    </div>
+  </div>
+  </div>
 </body>
 </html>

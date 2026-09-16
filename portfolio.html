@@ -127,74 +127,243 @@
     min-width: 0;
     height: 100%;
     background: #ece4d3;
-    padding: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
+    padding: 28px 32px 40px;
     overflow-y: auto;
   }
  
-  /* การ์ดมหาวิทยาลัยเป้าหมาย */
-  .uni-card {
-    max-width: 340px;
+  /* แถวบน: การ์ดมหาวิทยาลัย (ซ้าย) + ประวัติการศึกษา (ขวา) */
+  .top-row {
+    display: flex;
+    align-items: stretch;
+    gap: 22px;
     width: 100%;
+    flex-wrap: wrap;
+  }
+ 
+  /* ===== การ์ดมหาวิทยาลัยเป้าหมาย (ใหญ่ขึ้น) ===== */
+  .uni-card {
+    width: 320px;
+    flex-shrink: 0;
     background: #fff;
     border-radius: 24px;
-    padding: 32px 24px;
+    padding: 28px 22px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.1);
   }
   .uni-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: #fde3cd;
-    color: #d2691e;
+    gap: 6px;
+    background: #fdcdcd;
+    color: #d21e1e;
     font-weight: 700;
     font-size: 13px;
-    padding: 9px 20px;
+    padding: 8px 16px;
     border-radius: 999px;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
   }
   .uni-seal-wrap {
-    width: 140px;
-    height: 180px;
-    margin: 0 auto 20px;
+    width: 130px;
+    height: 150px;
+    margin: 0 auto 18px;
+    perspective: 900px;
   }
   .uni-seal {
     width: 100%;
     height: 100%;
+    object-fit: contain;
     transform-origin: center;
-    animation: spin-seal 10s linear infinite;
+    transform-style: preserve-3d;
+    animation: spin-seal 6s linear infinite;
   }
   @keyframes spin-seal {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .uni-seal { animation: none; }
   }
   .uni-title {
-    margin: 0 0 6px;
-    font-size: 19px;
+    margin: 0 0 8px;
+    font-size: 17px;
     color: #2c2c2c;
   }
   .uni-name {
-    margin: 0 0 22px;
-    font-size: 14px;
+    margin: 0 0 20px;
+    font-size: 20px;
     font-weight: 700;
-    color: #e0692b;
-    line-height: 1.5;
+    color: #e02b2b;
+    line-height: 1.4;
   }
   .uni-btn {
     background: transparent;
-    border: 2px dashed #e0692b;
-    color: #e0692b;
+    border: 2px dashed #e02b2b;
+    color: #e02b2b;
     font-weight: 700;
-    font-size: 13px;
-    padding: 10px 22px;
+    font-size: 14px;
+    padding: 12px 20px;
     border-radius: 999px;
     cursor: pointer;
+    font-family: inherit;
   }
   .uni-btn:hover { background: #fdf1e6; }
+ 
+  /* ===== ประวัติการศึกษา (อยู่ด้านขวาของ target goal) ===== */
+  .panel {
+    background: #fff;
+    border-radius: 24px;
+    padding: 26px 28px 28px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  }
+  .edu-panel {
+    flex: 1;
+    min-width: 340px;
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .panel-head .head-icon { font-size: 24px; }
+  .panel-head h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #2c2c2c;
+  }
+ 
+  .edu-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .edu-box {
+    background: #fdf4ec;
+    border-radius: 18px;
+    padding: 20px;
+  }
+  .edu-box.school { flex: 2; min-width: 260px; }
+  .edu-box.track  { flex: 1; min-width: 160px; }
+ 
+  .school-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .school-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .edu-label {
+    font-size: 13px;
+    color: #8a7b6c;
+    margin-bottom: 4px;
+  }
+  .edu-value {
+    font-size: 19px;
+    font-weight: 700;
+    color: #2c2c2c;
+    line-height: 1.35;
+  }
+  .edu-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    background: #fdcdcd;
+    color: #c0392b;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  .track-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #8a7b6c;
+    margin-bottom: 10px;
+  }
+ 
+  .gpax-box {
+    flex: 0 0 210px;
+    background: #c0392b;
+    border-radius: 18px;
+    padding: 22px 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .gpax-box .gpax-label {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.95;
+  }
+  .gpax-box .gpax-value {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-top: 6px;
+  }
+ 
+  /* ===== ผลงาน (อยู่ด้านล่าง) ===== */
+  .work-panel { margin-top: 22px; }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .work-card {
+    background: #fdf4ec;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .work-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .work-card h4 {
+    margin: 0;
+    font-size: 17px;
+    color: #2c2c2c;
+  }
+  .work-card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6b5f52;
+  }
+  .work-tag {
+    align-self: flex-start;
+    background: #fdcdcd;
+    color: #c0392b;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
  
   /* หน้าต่างป๊อปอัพ */
   .modal-overlay {
@@ -205,37 +374,112 @@
     align-items: center;
     justify-content: center;
     z-index: 999;
-    padding: 16px;
+    padding: 24px 16px;
   }
   .modal-overlay.open { display: flex; }
   .modal-box {
     background: #fff;
-    border-radius: 20px;
-    padding: 26px 24px;
-    max-width: 320px;
+    border-radius: 24px;
+    padding: 36px 40px;
+    max-width: 640px;
     width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
     position: relative;
   }
   .modal-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fde3cd;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
-    color: #999;
+    color: #e0692b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .modal-box h3 {
-    margin: 0 0 10px;
+  .modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fdcdcd;
+    color: #e02b2b;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .modal-box h2 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    color: #e02b2b;
+  }
+  .modal-box .modal-subtitle {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: #6b5f52;
+  }
+  .modal-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 0 0 26px;
+  }
+  .modal-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 17px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin: 0 0 18px;
+  }
+  .modal-section-title .check {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #e02b2b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .reason-card {
+    background: #fdf1e6;
+    border-left: 4px solid #e02b2b;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+  .reason-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px;
+    font-size: 15px;
     color: #2c2c2c;
   }
-  .modal-box p {
+  .reason-card p {
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.7;
-    color: #4a3f35;
+    color: #5a4f45;
+  }
+ 
+  /* จอเล็ก */
+  @media (max-width: 900px) {
+    body { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; height: auto; }
+    .main-content { height: auto; padding: 22px 18px 32px; }
+    .uni-card { width: 100%; }
+    .gpax-box { flex: 1 1 100%; }
   }
     </style>
 </head>
@@ -251,7 +495,7 @@
       <ul>
         <li><a href="index.html" ><i>🏠</i> หน้าแรก</a></li>
         <li><a href="portfolio.html" class="active"><i>🎓</i> ประวัติการศึกษาและผลงาน</a></li>
-        <li><a href="collection.html"><i>📋</i> หน้าเกียรติบัตร</a></li>
+        <li><a href="achive.html"><i>📋</i> หน้าเกียรติบัตร</a></li>
         <li><a href="dm.html"><i>✉️</i> ติดต่อ</a></li>
       </ul>
     </nav>
@@ -267,48 +511,196 @@
     </div>
  
     <div class="footer-art">
-      <svg viewBox="0 0 100 60" width="90" height="54">
-        <ellipse cx="50" cy="45" rx="26" ry="14" fill="#f2ece0" stroke="#4a3f35" stroke-width="1.5"/>
-        <circle cx="38" cy="26" r="13" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
-        <circle cx="30" cy="16" r="5" fill="#2c2c2c"/>
-        <circle cx="46" cy="16" r="5" fill="#2c2c2c"/>
-        <circle cx="33" cy="27" r="3.5" fill="#2c2c2c"/>
-        <circle cx="43" cy="27" r="3.5" fill="#2c2c2c"/>
-      </svg>
+        <svg viewBox="0 0 100 60" width="90" height="54">
+          <ellipse cx="50" cy="45" rx="26" ry="14" fill="#f2ece0" stroke="#4a3f35" stroke-width="1.5"/>
+          <circle cx="38" cy="26" r="13" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+          <circle cx="30" cy="16" r="5" fill="#2c2c2c"/>
+          <circle cx="46" cy="16" r="5" fill="#2c2c2c"/>
+          <circle cx="33" cy="27" r="3.5" fill="#2c2c2c"/>
+          <circle cx="43" cy="27" r="3.5" fill="#2c2c2c"/>
+        </svg>
     </div>
  
   </aside>
- <div class="main-content">
-    <div class="uni-card">
-      <div class="uni-badge">🎓 TARGET UNIVERSITY</div>
+
+  <div class="main-content">
  
-      <div class="uni-seal-wrap">
-        <svg class="uni-seal" viewBox="0 0 130 170">
-          <ellipse cx="65" cy="85" rx="62" ry="80" fill="none" stroke="#e0692b" stroke-width="3"/>
-          <ellipse cx="65" cy="85" rx="54" ry="72" fill="none" stroke="#e0692b" stroke-width="1.5"/>
-          <path d="M40 60 L65 20 L90 60 Z" fill="none" stroke="#e0692b" stroke-width="2"/>
-          <rect x="55" y="55" width="20" height="45" fill="none" stroke="#e0692b" stroke-width="2"/>
-          <text x="65" y="140" text-anchor="middle" font-size="9" fill="#e0692b" font-weight="700">TARGET UNI</text>
-        </svg>
+    <div class="top-row">
+ 
+      <!-- ซ้าย: มหาวิทยาลัยเป้าหมาย (ขยายใหญ่ขึ้น) -->
+      <div class="uni-card">
+        <div class="uni-badge">🎓 TARGET UNIVERSITY</div>
+ 
+        <div class="uni-seal-wrap">
+          <img class="uni-seal" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Logo_of_Srinakharinwirot_University.svg" alt="ตราสัญลักษณ์มหาวิทยาลัยศรีนครินทรวิโรฒ">
+        </div>
+ 
+        <h3 class="uni-title">มหาวิทยาลัยที่อยากเข้า</h3>
+        <p class="uni-name">มหาวิทยาลัยศรีนครินทรวิโรฒ</p>
+ 
+        <button class="uni-btn" onclick="document.getElementById('uniModal').classList.add('open')">
+          👆 ดูรายละเอียดคณะ
+        </button>
       </div>
  
-      <h3 class="uni-title">มหาวิทยาลัยที่อยากเข้า</h3>
-      <p class="uni-name">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+      <!-- ขวา: ประวัติการศึกษา -->
+      <section class="panel edu-panel">
+        <div class="panel-head">
+          <span class="head-icon">🎓</span>
+          <h2>ประวัติการศึกษา</h2>
+        </div>
  
-      <button class="uni-btn" onclick="document.getElementById('uniModal').classList.add('open')">
-        👆 คลิกเพื่อดูรายละเอียดคณะ
-      </button>
+        <div class="edu-grid">
+          <div class="edu-box school">
+            <div class="school-row">
+              <div class="school-icon">🏫</div>
+              <div>
+                <div class="edu-label">สถานศึกษาปัจจุบัน</div>
+                <div class="edu-value">โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</div>
+              </div>
+            </div>
+            <span class="edu-chip">🎓 ศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 6 (ม.6)</span>
+          </div>
+ 
+          <div class="edu-box track">
+            <div class="track-label">📘 สายการเรียน</div>
+            <div class="edu-value">เตรียมมนุษยศาสตร์ภาษาจีน</div>
+          </div>
+ 
+          <div class="gpax-box">
+            <div class="gpax-label">⭐ เกรดเฉลี่ยสะสม (GPAX)</div>
+            <div class="gpax-value">3.32</div>
+          </div>
+        </div>
+      </section>
+ 
     </div>
+ 
+    <!-- ล่าง: ผลงาน -->
+    <section class="panel work-panel">
+      <div class="panel-head">
+        <h2>ผลงาน</h2>
+      </div>
+ 
+      <div class="work-grid">
+        <div class="work-card">
+          <img src="" alt="ภาพการแข่งขันเล่านิทานภาษาจีน" style="width: 100%; border-radius: 12px;">
+          <h4>แข่งขันเล่านิทานภาษาจีน</h4>
+          <p>เข้าร่วมการแข่งขันเล่านิทานภาษาจีนระดับเขตพื้นที่ ฝึกการออกเสียงวรรณยุกต์ การใช้น้ำเสียง และบุคลิกภาพในการนำเสนอต่อหน้าผู้ฟัง</p>
+          
+        </div>
+ 
+        <div class="work-card">
+          <img src="" alt="ภาพผลงานเขียนพู่กันจีน" style="width: 100%; border-radius: 12px;">
+          <h4>ผลงานเขียนพู่กันจีน</h4>
+          <p>สร้างสรรค์ผลงานคัดตัวอักษรจีนด้วยพู่กัน จัดแสดงในกิจกรรมวันตรุษจีนของโรงเรียน ฝึกความประณีตและความเข้าใจในโครงสร้างตัวอักษร</p>
+          
+        </div>
+ 
+        <div class="work-card">
+          <img src="" alt="ภาพกิจกรรมชงชาและประดิษฐ์ของตกแต่งจีน" style="width: 100%; border-radius: 12px;">
+          <h4>ค่ายภาษาและวัฒนธรรมจีน</h4>
+          <p>เข้าร่วมค่ายภาษาจีนที่จัดโดยสถาบันภายนอก ได้ฝึกฟัง พูด อ่าน เขียน ในสถานการณ์จำลอง พร้อมเรียนรู้ขนบธรรมเนียมและมารยาทสังคมจีน</p>
+          
+        </div>
+ 
+        <div class="work-card">
+   <img src="" alt="ภาพโครงงานคำศัพท์จีนในชีวิตประจำวัน" style="width: 100%; border-radius: 12px;">
+          <h4>โครงงานคำศัพท์จีนในชีวิตประจำวัน</h4>
+          <p>จัดทำสื่อรวบรวมคำศัพท์และประโยคที่ใช้บ่อย พร้อมคำอ่านพินอิน เพื่อใช้ทบทวนร่วมกับเพื่อนในห้องเรียน</p>
+          
+        </div>
+ 
+        <div class="work-card">
+       <img src="" alt="ภาพกิจกรรมวันตรุษจีนของโรงเรียน" style="width: 100%; border-radius: 12px;">
+          <h4>กิจกรรมวันตรุษจีนของโรงเรียน</h4>
+          <p>ร่วมเป็นทีมงานจัดซุ้มกิจกรรม ทั้งการชงชา การประดิษฐ์ของตกแต่ง และแนะนำความหมายของเทศกาลให้กับน้อง ๆ ที่มาร่วมงาน</p>
+          
+        </div>
+ 
+        <div class="work-card">
+          <img src="" alt="ภาพหน้าจอแอปพลิเคชันฝึกภาษาจีน" style="width: 100%; border-radius: 12px;">
+          <h4>ฝึกภาษาจีนด้วยตนเอง</h4>
+          <p>ทบทวนคำศัพท์และไวยากรณ์ใหม่ทุกสัปดาห์จากพอดแคสต์ หนังสือเรียน และแอปพลิเคชันฝึกภาษา เพื่อเตรียมสอบวัดระดับ HSK</p>
+          
+        </div>
+      </div>
+    </section>
+ 
+  </div>
   </div>
  
-  <div id="uniModal" class="modal-overlay">
+   <div id="uniModal" class="modal-overlay">
     <div class="modal-box">
       <button class="modal-close" onclick="document.getElementById('uniModal').classList.remove('open')">✕</button>
-      <h3>รายละเอียดคณะ</h3>
-      <p>
-        คณะเทคโนโลยีสารสนเทศ สจล. เปิดสอนหลักสูตรที่เกี่ยวข้องกับภาษาและเทคโนโลยี
-        แก้ไขรายละเอียดตรงนี้ให้ตรงกับคณะ/สาขาที่ต้องการได้เลยครับ
-      </p>
+ 
+      <div class="modal-badge">◎ TARGET GOAL</div>
+      <h2>คณะมนุษยศาสตร์ สาขาภาษาภาคตะวันออก</h2>
+      <p class="modal-subtitle">มหาวิทยาลัยศรีนครินทรวิโรฒ (SWU)</p>
+      <hr class="modal-divider">
+ 
+      <div class="modal-section-title">
+        <span class="check">✓</span>
+        ทำไมถึงมั่นใจว่าเหมาะสมและพร้อมศึกษาในสาขานี้
+      </div>
+ 
+      <div class="reason-card">
+        <h4>🏅 ประสบการณ์ตรงด้านภาษาและวัฒนธรรมจีน</h4>
+        <p>
+          ผ่านการเข้าร่วมกิจกรรมและค่ายภาษาจีนของสถาบันต่างๆ โดยตรง ทั้งการฝึกฟัง พูด อ่าน เขียน
+          ในสถานการณ์จำลองใกล้เคียงชีวิตจริง อีกทั้งยังได้เรียนรู้ขนบธรรมเนียม ประเพณี และมารยาทสังคมจีน
+          ผ่านกิจกรรมเชิงวัฒนธรรม เช่น การชงชา การเขียนพู่กันจีน และเทศกาลตรุษจีน
+          จึงคุ้นเคยกับบรรยากาศวิชาการและการใช้ชีวิตในแวดวงภาษาตะวันออกมาโดยตลอด</p>
+      </div>
+ 
+      <div class="reason-card">
+        <h4>🈶 ทักษะภาษาจีนในระดับที่ใช้งานได้จริง</h4>
+        <p>
+          มีพื้นฐานภาษาจีนทั้งด้านไวยากรณ์ คำศัพท์ และการออกเสียงวรรณยุกต์ (声调) ที่ถูกต้อง
+          สามารถสนทนาในชีวิตประจำวันได้อย่างเป็นธรรมชาติ อ่านและเขียนตัวอักษรจีนพื้นฐานได้ในระดับหนึ่ง
+          รวมถึงเข้าใจโครงสร้างประโยคที่ซับซ้อนขึ้นตามระดับการเรียนรู้
+          ซึ่งเป็นหัวใจสำคัญของการศึกษาต่อในสาขาภาษาภาคตะวันออกที่ต้องใช้ภาษาอย่างเข้มข้น</p>
+      </div>
+ 
+      <div class="reason-card">
+        <h4>🌏 ความเข้าใจในความเป็นอยู่และสังคมจีน</h4>
+        <p>
+          สนใจติดตามวัฒนธรรม ความเป็นอยู่ และความเปลี่ยนแปลงของประเทศจีนอย่างต่อเนื่อง ทั้งในด้านสังคม เศรษฐกิจ
+          และเทคโนโลยี ผ่านการอ่านข่าวสาร ดูสารคดี และติดตามสื่อภาษาจีนโดยตรง
+          ทำให้เข้าใจบริบทและมุมมองความคิดของคนจีนในเชิงลึก ไม่ใช่แค่ระดับภาษาเพียงอย่างเดียว
+          ซึ่งจะช่วยให้ปรับตัวและต่อยอดความรู้ในระดับอุดมศึกษาได้อย่างมั่นใจ
+        </p>
+      </div>
+ 
+      <div class="reason-card">
+        <h4>💬 ทักษะการสื่อสารและการนำเสนอ</h4>
+        <p>
+          เคยเข้าร่วมกิจกรรมและการแข่งขันที่ต้องใช้ทักษะการพูดนำเสนอเป็นภาษาจีนต่อหน้าคณะกรรมการและผู้ฟังจำนวนมาก
+          ทั้งการเล่าเรื่อง การโต้ตอบคำถามเฉพาะหน้า และการทำงานเป็นทีมร่วมกับผู้อื่น
+          ประสบการณ์เหล่านี้ช่วยฝึกความมั่นใจ ไหวพริบ และบุคลิกภาพในการสื่อสาร
+          ซึ่งเป็นทักษะที่จำเป็นอย่างมากต่อการเรียนและการทำงานในระดับมหาวิทยาลัย
+        </p>
+      </div>
+ 
+      <div class="reason-card">
+        <h4>📚 ความมุ่งมั่นใฝ่เรียนรู้อย่างต่อเนื่อง</h4>
+        <p>
+          หมั่นฝึกฝนภาษาจีนด้วยตนเองนอกห้องเรียนอย่างต่อเนื่อง ทั้งจากสื่อออนไลน์ หนังสือเรียน พอดแคสต์
+          และแอปพลิเคชันฝึกภาษาต่างๆ รวมถึงตั้งเป้าหมายทบทวนคำศัพท์และไวยากรณ์ใหม่ทุกสัปดาห์
+          แสดงให้เห็นถึงวินัยในตนเอง ความอดทน และความตั้งใจจริงในการพัฒนาทักษะภาษาอย่างสม่ำเสมอ
+          ไม่ใช่แค่การเรียนตามหลักสูตรในห้องเรียนเพียงอย่างเดียว
+        </p>
+      </div>
+ 
+      <div class="reason-card">
+        <h4>🎯 เป้าหมายชัดเจนสอดคล้องกับหลักสูตร</h4>
+        <p>
+          มีเป้าหมายที่แน่วแน่ในการศึกษาต่อด้านภาษาจีนเพื่อนำไปใช้ประกอบอาชีพในอนาคต ไม่ว่าจะเป็นด้านการแปล
+          ธุรกิจระหว่างประเทศ หรือการสอนภาษา และได้ศึกษาโครงสร้างหลักสูตรของสาขานี้มาแล้วในระดับหนึ่ง
+          จึงมั่นใจว่ารายวิชาและแนวทางการเรียนการสอนสอดคล้องกับความสนใจและเป้าหมายของตนเอง
+          พร้อมที่จะเรียนรู้และเติบโตไปกับหลักสูตรของสาขานี้ได้อย่างเต็มที่
+        </p>
+      </div>
     </div>
   </div>
 </body>
