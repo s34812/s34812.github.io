@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อ | Thanida</title>
+    <style>
+        * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: #f2ece0;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  /* ===== แถบด้านข้าง ===== */
+  .sidebar {
+    width: 270px;
+    height: 100%;
+    flex-shrink: 0;
+    background: #f2ece0;
+    padding: 32px 22px;
+    color: #4a3f35;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+    overflow-y: auto;
+  }
+  .logo-badge {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 4px;
+    border-radius: 50%;
+    background: #c0392b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f2ece0;
+    font-size: 34px;
+    font-weight: 700;
+    position: relative;
+  }
+  .logo-badge::before,
+  .logo-badge::after {
+    content: "❀";
+    position: absolute;
+    color: #c0392b;
+    font-size: 16px;
+  }
+  .logo-badge::before { top: -6px; left: -10px; }
+  .logo-badge::after  { top: -2px; right: -14px; }
+
+  .brand-title {
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 30px;
+    margin: 10px 0 4px;
+    color: #2c2c2c;
+  }
+  .brand-sub {
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #6b5f52;
+    margin-bottom: 8px;
+  }
+  .accent-line {
+    width: 40px;
+    height: 3px;
+    background: #c0392b;
+    border-radius: 3px;
+    margin: 0 auto 20px;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0 0 28px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #4a3f35;
+    font-size: 14px;
+    transition: background 0.15s, color 0.15s;
+  }
+  nav a i { font-style: normal; width: 18px; text-align: center; }
+  nav a:hover { background: #e7ddc9; }
+  nav a.active { background: #c0392b; color: #fff; }
+
+  .mountain { margin: 8px 0 4px; }
+  .quote { text-align: center; margin: 4px 0 20px; }
+  .quote .cn { font-size: 15px; font-weight: 600; color: #2c2c2c; }
+  .quote .th { font-size: 12px; color: #6b5f52; margin-top: 6px; line-height: 1.5; }
+  .footer-art { text-align: center; }
+
+  /* ===== เนื้อหาหลัก ===== */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    background:
+      radial-gradient(800px 400px at 80% -60px, #fbe1d8 0%, rgba(251,225,216,0) 70%),
+      #ece4d3;
+    padding: 36px 40px 48px;
+  }
+  .panel {
+    background: #fff;
+    border-radius: 26px;
+    padding: 30px 34px 34px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+  .panel-head .head-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .panel-head h2 {
+    margin: 0;
+    font-size: 26px;
+    color: #2c2c2c;
+  }
+
+  /* กริดช่องทางติดต่อ */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .contact-item {
+    grid-column: span 1;
+    background: #fdf7f4;
+    border: 1px solid #f3e3dc;
+    border-radius: 18px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .contact-item.wide { grid-column: 1 / -1; }
+  a.contact-item:hover { background: #fbeae4; }
+
+  .contact-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    background: #fbdcd7;
+    color: #c0392b;
+  }
+  .contact-icon.line     { background: #e4f7e2; color: #06c755; }
+  .contact-icon.facebook { background: #e3ecfd; color: #1877f2; }
+  .contact-icon.gmail    { background: #fde4e4; color: #d93025; }
+
+  .contact-label {
+    font-size: 14px;
+    color: #8a7b6c;
+    margin-bottom: 5px;
+  }
+  .contact-value {
+    font-size: 19px;
+    font-weight: 700;
+    color: #2c2c2c;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .contact-value.accent { color: #c0392b; }
+
+  /* ขอบคุณที่รับชม */
+  .thanks {
+    max-width: 1080px;
+    margin: 24px auto 0;
+    background: #c0392b;
+    border-radius: 26px;
+    padding: 46px 34px 48px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(192,57,43,0.28);
+  }
+  .thanks .cn {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .thanks h2 {
+    margin: 0 0 12px;
+    font-size: 30px;
+  }
+  .thanks p {
+    margin: 0 auto;
+    max-width: 620px;
+    font-size: 15px;
+    line-height: 1.85;
+    color: #fbe3df;
+  }
+  .thanks .sign {
+    margin-top: 22px;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 30px;
+  }
+  .thanks-line {
+    width: 54px;
+    height: 3px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 3px;
+    margin: 20px auto 0;
+  }
+
+  @media (max-width: 900px) {
+    body { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; height: auto; }
+    .main-content { height: auto; padding: 26px 16px 40px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-item, .contact-item.wide { grid-column: 1 / -1; }
+    .panel { padding: 24px 20px 28px; }
+    .panel-head h2 { font-size: 22px; }
+  }
+    </style>
+</head>
+<body>
+<aside class="sidebar">
+
+    <div class="logo-badge">学</div>
+    <div class="brand-title">Thanida</div>
+    <div class="brand-sub">เส้นทางสู่อนาคต<br>ที่อยากไปให้ถึง</div>
+    <div class="accent-line"></div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html"><i>🏠</i> หน้าแรก</a></li>
+        <li><a href="portfolio.html"><i>🎓</i> ประวัติการศึกษาและผลงาน</a></li>
+        <li><a href="collection.html"><i>📋</i> หน้าเกียรติบัตร</a></li>
+        <li><a href="dm.html" class="active"><i>✉️</i> ติดต่อ</a></li>
+      </ul>
+    </nav>
+
+    <svg class="mountain" viewBox="0 0 230 90" width="100%" height="90">
+      <polygon points="0,90 45,25 75,55 110,10 160,60 190,35 230,90" fill="#c9c2b3"/>
+      <polygon points="30,90 75,45 110,70 160,30 230,90" fill="#b6ae9c" opacity="0.7"/>
+    </svg>
+
+    <div class="quote">
+      <div class="cn">"学习中文<br>打开更大的世界"</div>
+      <div class="th">เรียนภาษาจีน<br>เพื่อเปิดโลกที่กว้างขึ้น</div>
+    </div>
+
+    <div class="footer-art">
+      <svg viewBox="0 0 100 60" width="90" height="54">
+        <ellipse cx="50" cy="45" rx="26" ry="14" fill="#f2ece0" stroke="#4a3f35" stroke-width="1.5"/>
+        <circle cx="38" cy="26" r="13" fill="#fff" stroke="#2c2c2c" stroke-width="1.5"/>
+        <circle cx="30" cy="16" r="5" fill="#2c2c2c"/>
+        <circle cx="46" cy="16" r="5" fill="#2c2c2c"/>
+        <circle cx="33" cy="27" r="3.5" fill="#2c2c2c"/>
+        <circle cx="43" cy="27" r="3.5" fill="#2c2c2c"/>
+      </svg>
+    </div>
+
+  </aside>
+
+<main class="main-content">
+
+  <section class="panel">
+    <div class="panel-head">
+      <span class="head-icon">📇</span>
+      <h2>ช่องทางการติดต่อ</h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <a class="contact-item" href="tel:0820896528">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">เบอร์โทรศัพท์</div>
+          <div class="contact-value accent">082-089-6528</div>
+        </div>
+      </a>
+
+      <div class="contact-item">
+        <div class="contact-icon line">💬</div>
+        <div>
+          <div class="contact-label">ID Line</div>
+          <div class="contact-value">aeo_thanida</div>
+        </div>
+      </div>
+
+      <a class="contact-item" href="https://www.facebook.com/thanida.daeng.ubol" target="_blank" rel="noopener">
+        <div class="contact-icon facebook">f</div>
+        <div>
+          <div class="contact-label">Facebook</div>
+          <div class="contact-value">Thanida Daeng Ubol</div>
+        </div>
+      </a>
+
+      <a class="contact-item" href="mailto:thanidadaengubol@gmail.com">
+        <div class="contact-icon gmail">✉️</div>
+        <div>
+          <div class="contact-label">Gmail</div>
+          <div class="contact-value accent">thanidadaengubol@gmail.com</div>
+        </div>
+      </a>
+            <a class="contact-item" href="https://www.instagram.com/aeo_thanida2551/" target="_blank" rel="noopener">
+
+      
+
+        <div class="contact-icon">Ig</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">aeo_thanida2551</div>
+        </div>
+      
+            </a>
+    </div>
+  </section>
+
+  <section class="thanks">
+    <div class="cn">谢谢观看</div>
+    <h2>ขอบคุณที่รับชม</h2>
+    <p>
+      ขอบคุณที่สละเวลาอ่านแฟ้มสะสมผลงานจนจบ ทุกกิจกรรมและทุกผลงานในเว็บไซต์นี้
+      คือเส้นทางการเรียนรู้ภาษาจีนที่ตั้งใจเก็บสะสมมาตลอด และหวังว่าจะได้ก้าวต่อไปในรั้วมหาวิทยาลัยที่ใฝ่ฝัน
+    </p>
+    <div class="thanks-line"></div>
+    <div class="sign">Thanida</div>
+  </section>
+
+</main>
+
+</body>
+</html>

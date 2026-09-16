@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แฟ้มสะสมผลงาน | Thanida</title>
     <style>
         * { box-sizing: border-box; }
   html, body { height: 100%; }
@@ -12,7 +13,8 @@
     display: flex;
     font-family: 'Segoe UI', Tahoma, sans-serif;
   }
- 
+
+  /* ===== แถบด้านข้าง ===== */
   .sidebar {
     width: 270px;
     height: 100%;
@@ -23,8 +25,6 @@
     box-shadow: 4px 0 16px rgba(0,0,0,0.15);
     overflow-y: auto;
   }
- 
-  /* โลโก้ */
   .logo-badge {
     width: 88px;
     height: 88px;
@@ -48,7 +48,7 @@
   }
   .logo-badge::before { top: -6px; left: -10px; }
   .logo-badge::after  { top: -2px; right: -14px; }
- 
+
   .brand-title {
     text-align: center;
     font-family: 'Brush Script MT', cursive;
@@ -56,7 +56,6 @@
     margin: 10px 0 4px;
     color: #2c2c2c;
   }
- 
   .brand-sub {
     text-align: center;
     font-size: 13px;
@@ -64,7 +63,6 @@
     color: #6b5f52;
     margin-bottom: 8px;
   }
- 
   .accent-line {
     width: 40px;
     height: 3px;
@@ -72,8 +70,6 @@
     border-radius: 3px;
     margin: 0 auto 20px;
   }
- 
-  /* เมนู */
   nav ul {
     list-style: none;
     margin: 0 0 28px;
@@ -95,188 +91,202 @@
   }
   nav a i { font-style: normal; width: 18px; text-align: center; }
   nav a:hover { background: #e7ddc9; }
-  nav a.active {
-    background: #c0392b;
-    color: #fff;
-  }
- 
-  /* ภูเขา decorative */
+  nav a.active { background: #c0392b; color: #fff; }
+
   .mountain { margin: 8px 0 4px; }
- 
-  .quote {
-    text-align: center;
-    margin: 4px 0 20px;
-  }
-  .quote .cn {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2c2c2c;
-  }
-  .quote .th {
-    font-size: 12px;
-    color: #6b5f52;
-    margin-top: 6px;
-    line-height: 1.5;
-  }
- 
+  .quote { text-align: center; margin: 4px 0 20px; }
+  .quote .cn { font-size: 15px; font-weight: 600; color: #2c2c2c; }
+  .quote .th { font-size: 12px; color: #6b5f52; margin-top: 6px; line-height: 1.5; }
   .footer-art { text-align: center; }
- 
-  /* เนื้อหาหลัก */
+
+  /* ===== เนื้อหาหลัก ===== */
   .main-content {
     flex: 1;
     min-width: 0;
     height: 100%;
-    background: #ece4d3;
-    padding: 32px;
+    overflow-y: auto;
+    background:
+      radial-gradient(900px 420px at 50% -80px, #fbe1d8 0%, rgba(251,225,216,0) 70%),
+      #ece4d3;
+    padding: 46px 40px 56px;
+  }
+
+  /* หัวหน้า */
+  .page-head { text-align: center; margin-bottom: 38px; }
+  .eyebrow {
+    display: inline-block;
+    border: 1.5px solid #e6a79b;
+    color: #c0392b;
+    background: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 9px 26px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .page-head h1 {
+    margin: 0 0 14px;
+    font-size: 42px;
+    color: #2c2c2c;
+    line-height: 1.25;
+  }
+  .page-head h1 span { color: #c0392b; }
+  .page-head .lead {
+    margin: 0;
+    font-size: 16px;
+    color: #6b5f52;
+  }
+
+  /* ปุ่มกรอง */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin: 30px 0 40px;
+  }
+  .filter-btn {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4a3f35;
+    background: #fff;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    transition: background 0.15s, color 0.15s;
+  }
+  .filter-btn:hover { background: #fbeae4; }
+  .filter-btn.active {
+    background: #c0392b;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(192,57,43,0.3);
+  }
+  .filter-btn:focus-visible { outline: 3px solid #8e2a20; outline-offset: 2px; }
+
+  /* การ์ดผลงาน */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .cert-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.09);
+    display: flex;
+    flex-direction: column;
+  }
+  .cert-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #f7ded7 0%, #efd0c6 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    overflow-y: auto;
   }
- 
-  /* การ์ดมหาวิทยาลัยเป้าหมาย */
-  .uni-card {
-    max-width: 340px;
-    width: 100%;
-    background: #fff;
-    border-radius: 24px;
-    padding: 32px 24px;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  }
-  .uni-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #fde3cd;
-    color: #d2691e;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 9px 20px;
-    border-radius: 999px;
-    margin-bottom: 22px;
-  }
-  .uni-seal-wrap {
-    width: 140px;
-    height: 180px;
-    margin: 0 auto 20px;
-  }
-  .uni-seal {
+  .cert-media img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    transform-origin: center;
-    animation: spin-seal 10s linear infinite;
+    object-fit: cover;
   }
-  @keyframes spin-seal {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  .uni-title {
-    margin: 0 0 6px;
-    font-size: 19px;
-    color: #2c2c2c;
-  }
-  .uni-name {
-    margin: 0 0 22px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #e0692b;
-    line-height: 1.5;
-  }
-  .uni-btn {
-    background: transparent;
-    border: 2px dashed #e0692b;
-    color: #e0692b;
-    font-weight: 700;
+  .cert-media .placeholder {
+    text-align: center;
+    color: #b08a80;
     font-size: 13px;
-    padding: 10px 22px;
-    border-radius: 999px;
-    cursor: pointer;
+    line-height: 1.6;
+    padding: 0 16px;
   }
-  .uni-btn:hover { background: #fdf1e6; }
- 
-  /* หน้าต่างป๊อปอัพ */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    padding: 16px;
+  .cert-media .placeholder .ph-icon { font-size: 30px; display: block; margin-bottom: 6px; }
+
+  .cert-body { padding: 22px 22px 26px; }
+  .cert-kicker {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #c0392b;
+    margin-bottom: 10px;
   }
-  .modal-overlay.open { display: flex; }
-  .modal-box {
-    background: #fff;
-    border-radius: 20px;
-    padding: 26px 24px;
-    max-width: 320px;
-    width: 100%;
-    position: relative;
-  }
-  .modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: #999;
-  }
-  .modal-box h3 {
+  .cert-body h3 {
     margin: 0 0 10px;
-    font-size: 17px;
+    font-size: 20px;
+    line-height: 1.4;
     color: #2c2c2c;
   }
-  .modal-box p {
-    margin: 0;
+  .cert-body p {
+    margin: 0 0 14px;
     font-size: 14px;
-    line-height: 1.7;
-    color: #4a3f35;
+    line-height: 1.75;
+    color: #6b5f52;
   }
-  .uni-seal-wrap {
-  perspective: 600px;   /* ทำให้เห็นมิติความลึกตอนหมุน ถ้าไม่ใส่จะแบนราบไม่มีมิติ */
-}
-.uni-seal {
-  transform-style: preserve-3d;
-  animation: spin-seal 4s linear infinite;
-}
-@keyframes spin-seal {
-  from { transform: rotateY(0deg); }   /* rotateY = หมุนรอบแกนตั้ง */
-  to   { transform: rotateY(360deg); }
-}
+  .cert-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    color: #8a7b6c;
+  }
+  .cert-meta .tag {
+    background: #fbdcd7;
+    color: #c0392b;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  .empty-note {
+    display: none;
+    text-align: center;
+    color: #6b5f52;
+    font-size: 15px;
+    padding: 40px 0;
+  }
+
+  @media (max-width: 900px) {
+    body { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; height: auto; }
+    .main-content { height: auto; padding: 32px 18px 44px; }
+    .page-head h1 { font-size: 30px; }
+  }
     </style>
 </head>
 <body>
 <aside class="sidebar">
- 
+
     <div class="logo-badge">学</div>
     <div class="brand-title">Thanida</div>
     <div class="brand-sub">เส้นทางสู่อนาคต<br>ที่อยากไปให้ถึง</div>
     <div class="accent-line"></div>
- 
+
     <nav>
       <ul>
-        <li><a href="index.html" ><i>🏠</i> หน้าแรก</a></li>
-        <li><a href="portfolio.html" ><i>🎓</i> ประวัติการศึกษาและผลงาน</a></li>
+        <li><a href="index.html"><i>🏠</i> หน้าแรก</a></li>
+        <li><a href="portfolio.html"><i>🎓</i> ประวัติการศึกษาและผลงาน</a></li>
         <li><a href="collection.html" class="active"><i>📋</i> หน้าเกียรติบัตร</a></li>
         <li><a href="dm.html"><i>✉️</i> ติดต่อ</a></li>
       </ul>
     </nav>
- 
+
     <svg class="mountain" viewBox="0 0 230 90" width="100%" height="90">
       <polygon points="0,90 45,25 75,55 110,10 160,60 190,35 230,90" fill="#c9c2b3"/>
       <polygon points="30,90 75,45 110,70 160,30 230,90" fill="#b6ae9c" opacity="0.7"/>
     </svg>
- 
+
     <div class="quote">
       <div class="cn">"学习中文<br>打开更大的世界"</div>
       <div class="th">เรียนภาษาจีน<br>เพื่อเปิดโลกที่กว้างขึ้น</div>
     </div>
- 
+
     <div class="footer-art">
       <svg viewBox="0 0 100 60" width="90" height="54">
         <ellipse cx="50" cy="45" rx="26" ry="14" fill="#f2ece0" stroke="#4a3f35" stroke-width="1.5"/>
@@ -287,41 +297,104 @@
         <circle cx="43" cy="27" r="3.5" fill="#2c2c2c"/>
       </svg>
     </div>
- 
+
 </aside>
-<div class="main-content">
-    <div class="uni-card">
-      <div class="uni-badge">🎓 TARGET UNIVERSITY</div>
- 
-      <div class="uni-seal-wrap">
-        <svg class="uni-seal" viewBox="0 0 130 170">
-          <ellipse cx="65" cy="85" rx="62" ry="80" fill="none" stroke="#e0692b" stroke-width="3"/>
-          <ellipse cx="65" cy="85" rx="54" ry="72" fill="none" stroke="#e0692b" stroke-width="1.5"/>
-          <path d="M40 60 L65 20 L90 60 Z" fill="none" stroke="#e0692b" stroke-width="2"/>
-          <rect x="55" y="55" width="20" height="45" fill="none" stroke="#e0692b" stroke-width="2"/>
-          <text x="65" y="140" text-anchor="middle" font-size="9" fill="#e0692b" font-weight="700">TARGET UNI</text>
-        </svg>
+
+<main class="main-content">
+
+  <div class="page-head">
+    <div class="eyebrow">PORTFOLIO COLLECTION</div>
+    <h1>แฟ้มสะสมผลงาน <span>(Portfolio)</span></h1>
+    <p class="lead">รวบรวมเกียรติบัตร โครงงาน และกิจกรรมอบรมที่ได้เข้าร่วมปฏิบัติและรับการอบรม</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">ทั้งหมด</button>
+    <button class="filter-btn" data-filter="training">การอบรม / กิจกรรม</button>
+    <button class="filter-btn" data-filter="cert">เกียรติบัตร</button>
+    <button class="filter-btn" data-filter="contest">การแข่งขัน</button>
+  </div>
+
+  <div class="cert-grid" id="certGrid">
+
+    <article class="cert-card" data-cat="contest">
+      <div class="cert-media">
+        <img src="e1.jpg" alt="" onerror="this.remove()">
       </div>
- 
-      <h3 class="uni-title">มหาวิทยาลัยที่อยากเข้า</h3>
-      <p class="uni-name">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
- 
-      <button class="uni-btn" onclick="document.getElementById('uniModal').classList.add('open')">
-        👆 คลิกเพื่อดูรายละเอียดคณะ
-      </button>
-    </div>
+      <div class="cert-body">
+        <span class="cert-kicker">COMPETITION</span>
+        <h3>การแข่งขันระบำจีน</h3>
+        <p>ได้รับรางวัลชมเชย รายการแข่งขัน ระบำจีน ประจำปี2567</p>
+        <div class="cert-meta"><span class="tag">การแข่งขัน</span><span>ปี 2567</span></div>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cat="training">
+      <div class="cert-media">
+        <img src="e2.jpg" alt="" onerror="this.remove()">
+      </div>
+      <div class="cert-body">
+        <span class="cert-kicker">CERTIFICATE</span>
+        <h3>การอบรมเชิงปฏิบัติการและทดสอบ HSK 3–4</h3>
+        <p>ได้ผ่านการอบรมเชิงปฏิบัติการและทดสอบวัดความรู้ภาษาจีน HSK 3-4ประจำปีการศึกษา2567</p>
+        <div class="cert-meta"><span class="tag">การอบรม</span><span>ปี 2567</span></div>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cat="cert">
+      <div class="cert-media">
+        <img src="e3.jpg" alt="" onerror="this.remove()">
+      </div>
+      <div class="cert-body">
+        <span class="cert-kicker">CERTIFICATE</span>
+        <h3>การอบรมและทดสอบ HSK ระดับ 4</h3>
+        <p>ได้ผ่านการอบรมเชิงปฏิบัติการและทดสอบวัดความรู้ภาษาจีน HSK 4ประจำปีการศึกษา2568</p>
+        <div class="cert-meta"><span class="tag">เกียรติบัตร</span><span>ปี 2568</span></div>
+      </div>
+    </article>
+
+    <article class="cert-card" data-cat="contest">
+      <div class="cert-media">
+        <img src="e4.jpg" alt="" onerror="this.remove()">
+      </div>
+      <div class="cert-body">
+        <span class="cert-kicker">COMPETITION</span>
+        <h3>การแข่งขันวรรณคดี On Air</h3>
+        <p>ได้รับรางวัลรองชนะเลิศอันดับ2 จากการแข่งขันวรรณคดี On air(พากย์เสียงรรณคดี) ระดับชั้นมัธยมศึกษาปีที่ 4–6 ในกิจกรรมสัปดาห์แห่งการเรียนรู้ภาษาและวรรณคดีไทย</p>
+        <div class="cert-meta"><span class="tag">การแข่งขัน</span><span>ปี 2568</span></div>
+      </div>
+    </article>
+
+
   </div>
- <div>
-  <div id="uniModal" class="modal-overlay">
-    <div class="modal-box">
-      <button class="modal-close" onclick="document.getElementById('uniModal').classList.remove('open')">✕</button>
-      <h3>รายละเอียดคณะ</h3>
-      <p>
-        คณะเทคโนโลยีสารสนเทศ สจล. เปิดสอนหลักสูตรที่เกี่ยวข้องกับภาษาและเทคโนโลยี
-        แก้ไขรายละเอียดตรงนี้ให้ตรงกับคณะ/สาขาที่ต้องการได้เลยครับ
-      </p>
-    </div>
-  </div>
-  </div>
+
+  <p class="empty-note" id="emptyNote">ยังไม่มีผลงานในหมวดนี้</p>
+
+</main>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.cert-card');
+  const emptyNote = document.getElementById('emptyNote');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      let shown = 0;
+
+      cards.forEach(card => {
+        const match = filter === 'all' || card.dataset.cat === filter;
+        card.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+
+      emptyNote.style.display = shown === 0 ? 'block' : 'none';
+    });
+  });
+</script>
+
 </body>
 </html>
